@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: api
+    build: ./services/api
+    volumes:
+      - ./services/api:/api
+    ports:
+      - 5000:5000
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/database
+    depends_on:
+      - db
+  web:
+    container_name: web
+    build: ./services/web
+    volumes:
+      - ./services/web:/web
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
+  db:
+    container_name: db
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=database

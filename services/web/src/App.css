@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+.App {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	font-family: "Montserrat", sans-serif;
+	flex-direction: column;
+	margin: 0 12em;
+}
+
+.create-form {
+	display: inline-flex;
+}
+
+.create-form .field {
+	margin: 0 !important;
+}
+
+.create-button {
+	margin-left: 2em !important;
+}
