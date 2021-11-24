@@ -1,3 +1,3 @@
 export const config = {
-	apiBackend: "http://localhost:5000",
+  apiBackend: "http://localhost:5000",
 };
