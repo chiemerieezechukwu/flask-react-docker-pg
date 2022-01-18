@@ -1,13 +1,20 @@
+import PropTypes, { InferProps } from "prop-types";
 import { Form } from "semantic-ui-react";
 
-type propsType = { setItem: any };
+const InputBoxPropTypes = {
+  setItem: PropTypes.func.isRequired,
+};
 
-const InputBox = ({ setItem }: propsType) => {
+type InputBoxTypes = InferProps<typeof InputBoxPropTypes>;
+
+const InputBox = ({ setItem }: InputBoxTypes) => {
   return (
     <Form.Field>
       <input placeholder="item" onChange={(e) => setItem(e.target.value)} />
     </Form.Field>
   );
 };
+
+InputBox.propTypes = InputBoxPropTypes;
 
 export default InputBox;

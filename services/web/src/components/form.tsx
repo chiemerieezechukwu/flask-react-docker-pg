@@ -1,9 +1,17 @@
+import PropTypes, { InferProps } from "prop-types";
 import { Button, Form } from "semantic-ui-react";
 import api from "../utils/api";
 import InputBox from "./input_box";
 
-type propsType = { item: string; setItem: any; setApiData: any };
-const FormCompoment = ({ item, setItem, setApiData }: propsType) => {
+const FormComponentPropTypes = {
+  item: PropTypes.string.isRequired,
+  setItem: PropTypes.func.isRequired,
+  setApiData: PropTypes.func.isRequired,
+};
+
+type FormComponentTypes = InferProps<typeof FormComponentPropTypes>;
+
+const FormComponent = ({ item, setItem, setApiData }: FormComponentTypes) => {
   const postData = () => {
     item &&
       api()
@@ -27,4 +35,6 @@ const FormCompoment = ({ item, setItem, setApiData }: propsType) => {
   );
 };
 
-export default FormCompoment;
+FormComponent.propTypes = FormComponentPropTypes;
+
+export default FormComponent;

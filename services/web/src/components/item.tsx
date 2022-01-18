@@ -1,16 +1,19 @@
+import PropTypes, { InferProps } from "prop-types";
 import { useState } from "react";
 import { Button, Table, Form } from "semantic-ui-react";
 import InputBox from "./input_box";
 
-type apiDataElement = {
-  id: number;
-  name: string;
-  onDelete: any;
-  onUpdate: any;
-  setItem: any;
+const TableItemPropTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  setItem: PropTypes.func.isRequired,
 };
 
-const TableItem = ({ id, name, onDelete, onUpdate, setItem }: apiDataElement) => {
+type TableItemTypes = InferProps<typeof TableItemPropTypes>;
+
+const TableItem = ({ id, name, onDelete, onUpdate, setItem }: TableItemTypes) => {
   const [updateState, setUpdateState] = useState(false);
 
   return (
@@ -52,5 +55,7 @@ const TableItem = ({ id, name, onDelete, onUpdate, setItem }: apiDataElement) =>
     </>
   );
 };
+
+TableItem.propTypes = TableItemPropTypes;
 
 export default TableItem;
