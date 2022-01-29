@@ -2,7 +2,7 @@ import { Table } from "semantic-ui-react";
 import { useState, useEffect } from "react";
 import api from "../utils/api";
 import TableItem from "./item";
-import FormComponent from "./form";
+import FormCompoment from "./form";
 
 const Home = () => {
   const [apiData, setApiData] = useState([]);
@@ -63,7 +63,7 @@ const Home = () => {
           })}
         </Table.Body>
       </Table>
-      <FormComponent item={item} setItem={setItem} setApiData={setApiData} />
+      <FormCompoment item={item} setItem={setItem} setApiData={setApiData} />
     </>
   );
 };
