@@ -1,14 +1,19 @@
 # syntax=docker/dockerfile:1
 
-FROM node:13.12.0-alpine
+FROM node:21-alpine as builder
 
 WORKDIR /web
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm i
+# Copy the package.json and package-lock.json files to the container
+COPY package*.json ./
+
+# Install the dependencies
+RUN npm ci
 
 COPY . .
 
-CMD ["npm", "start"]
+# Expose the port
+EXPOSE 3000
+
+# Serve the application
+CMD ["npm", "start"] 

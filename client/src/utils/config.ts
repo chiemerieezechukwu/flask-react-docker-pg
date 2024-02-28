@@ -1,3 +1,3 @@
 export const config = {
-  apiBackend: "http://localhost:5000",
+  apiBackend: process.env.REACT_APP_API_BASE_URL || "http://localhost:5001",
 };
